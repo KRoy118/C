@@ -1,48 +1,40 @@
 #include <stdio.h>
-#include <stdlib.h>
-#define len 5
-
-
-int binarySearch(int array[], int leng, int searchX)
+int main()
 {
-	int pos = -1, right, left, i = 0;
+  int c, first, last, middle, n, search, array[100];
 
-	left = 0;
-	right = leng - 1;
+  printf("Enter number of elements\n");
+  scanf("%d", &n);
 
-	while(left <= right)
-	{
-		pos = left + (right - left) / 2;
-		if(array[pos] == searchX)
-		{
-			return pos;
-		}
-		else if(array[pos] > searchX)
-		{
-			right = pos - 1;
-		}
-		else
-		{
-			left = pos + 1;
-		}
-	}
-	return -1; /* not found */
+  printf("Enter %d integers\n", n);
+
+  for (c = 0; c < n; c++)
+    scanf("%d", &array[c]);
+
+  printf("Enter value to find\n");
+  scanf("%d", &search);
+
+  first = 0;
+  last = n - 1;
+  middle = (first+last)/2;
+
+  while (first <= last) {
+    if (array[middle] < search)
+      first = middle + 1;
+    else if (array[middle] == search) {
+      printf("%d found at location %d.\n", search, middle+1);
+      break;
+    }
+    else
+      last = middle - 1;
+
+    middle = (first + last)/2;
+  }
+  if (first > last)
+    printf("Not found! %d isn't present in the list.\n", search);
+
+  return 0;
 }
 
 
-void main(int argc, char *argv[])
-{
-	int array[len] = { 5, 8 , 10 , 14 ,16 };
-
-	int position;
-	position = binarySearch(array, len, 5);
-
-	if (position < 0)
-		printf("The number %d doesnt exist in array\n", 5);
-	else
-	{
-		printf("The number %d exist in array at position : %d \n", 5, position);
-	}
-
-
-}
+ 
