@@ -115,11 +115,6 @@ In this directory you will find (in the right order):
 * isogram
 * acronym
 * word-count
-* rna-transcription
-
-## Simple Client Server Implementation
-This directory contains
-* client.c
-* server.c
+* rna-transcr
 
 First execute server.c in a terminal and then client.c in a different terminal. Enables communication between two terminals.
